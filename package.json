@@ -1,0 +1,54 @@
+{
+  "name": "@khulnasoft.com/root",
+  "private": true,
+  "workspaces": [
+    "packages",
+    "packages/sdk",
+    "packages/sdks",
+    "packages/react",
+    "packages/sdks/e2e/*",
+    "packages/sdks/snippets/*",
+    "packages/sdks/output/*"
+  ],
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@rollup/plugin-commonjs": "^28.0.6",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "dotenv": "^16.0.3",
+    "nx": "21.2.1",
+    "nx-cloud": "^19.0.0",
+    "octokit": "^2.0.14",
+    "prettier": "^3.2.5",
+    "zx": "7.2.1"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/khulnasoft-lab/recli"
+  },
+  "scripts": {
+    "ci:lint": "prettier --check '**/*.{js,jsx,ts,tsx}'",
+    "lint:fix": "prettier --write '**/*.{js,jsx,ts,tsx}'",
+    "update-npm-dependency": "zx ./scripts/update-npm-dependency.mjs",
+    "g:changeset": "changeset",
+    "g:nx": "cd $INIT_CWD && nx"
+  },
+  "engines": {
+    "yarn": ">= 3.0.0"
+  },
+  "packageManager": "yarn@3.6.1",
+  "resolutions": {
+    "minimist": "^1.2.7",
+    "json5": "2.2.1",
+    "@khulnasoft.com/react": "workspace:*",
+    "@khulnasoft.com/sdk": "workspace:*"
+  },
+  "dependenciesMeta": {
+    "nx": {
+      "built": false
+    },
+    "nx-cloud": {
+      "built": false
+    }
+  }
+}

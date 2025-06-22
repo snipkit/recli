@@ -1,0 +1,61 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "nxCloudId": "68581ee1b569a2738c8b7a70",
+  "targetDefaults": {
+    "dev": {
+      "dependsOn": ["build"],
+      "configurations": {},
+      "options": {}
+    },
+    "serve": {
+      "dependsOn": ["build"]
+    },
+    "build-inline-fns": {
+      "dependsOn": ["^build"],
+      "outputs": ["{projectRoot}/src"],
+      "cache": true
+    },
+    "build": {
+      "dependsOn": ["^build", "prebuild"],
+      "outputs": ["{projectRoot}/dist"],
+      "executor": "nx:run-script",
+      "options": {
+        "script": "build"
+      },
+      "cache": true
+    },
+    "typecheck": {
+      "dependsOn": ["^build"]
+    },
+    "release": {
+      "dependsOn": ["build"]
+    },
+    "build:react": {
+      "cache": true
+    },
+    "build:qwik": {
+      "cache": true
+    },
+    "build:svelte": {
+      "cache": true
+    },
+    "build:solid": {
+      "cache": true
+    },
+    "build:react-native": {
+      "cache": true
+    },
+    "build:vue": {
+      "cache": true
+    },
+    "build:nextjs": {
+      "cache": true
+    }
+  },
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "sharedGlobals": [],
+    "production": ["default"]
+  },
+  "parallel": 3
+}

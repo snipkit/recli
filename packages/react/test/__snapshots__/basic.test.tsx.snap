@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Khulnasoft Pixel Should NOT be added again if already present in blocks array 1`] = `
+<div
+  className="khulnasoft-component khulnasoft-component-id"
+  data-name="page"
+  data-source="Rendered by Khulnasoft.com"
+  onClick={[Function]}
+>
+  <div
+    khulnasoft-content-id="id"
+    khulnasoft-model="page"
+    className="khulnasoft-content"
+    onClick={[Function]}
+  >
+    <div
+      data-khulnasoft-component="page"
+      data-khulnasoft-content-id="id"
+    >
+      
+      <div
+        khulnasoft-type="blocks"
+        className="khulnasoft-blocks css-h47494"
+        onClick={[Function]}
+      >
+        <img
+          aria-hidden="true"
+          khulnasoft-id="khulnasoft-pixel-4fzzzxjylrx"
+          className="khulnasoft-block khulnasoft-pixel-4fzzzxjylrx css-1mvsfya"
+          role="presentation"
+          src="https://cdn.khulnasoft.com/api/v1/pixel?apiKey=null"
+          style={Object {}}
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Khulnasoft Pixel Should NOT be added if blocks array is empty 1`] = `
+<div
+  className="khulnasoft-component khulnasoft-component-id"
+  data-name="page"
+  data-source="Rendered by Khulnasoft.com"
+  onClick={[Function]}
+>
+  <div
+    khulnasoft-content-id="id"
+    khulnasoft-model="page"
+    className="khulnasoft-content"
+    onClick={[Function]}
+  >
+    <div
+      data-khulnasoft-component="page"
+      data-khulnasoft-content-id="id"
+    >
+      
+      <div
+        khulnasoft-type="blocks"
+        className="khulnasoft-blocks no-blocks css-h47494"
+        onClick={[Function]}
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Khulnasoft Pixel Should be added if pixel is missing and blocks array has other block(s) 1`] = `
+<div
+  className="khulnasoft-component khulnasoft-component-id"
+  data-name="page"
+  data-source="Rendered by Khulnasoft.com"
+  onClick={[Function]}
+>
+  <div
+    khulnasoft-content-id="id"
+    khulnasoft-model="page"
+    className="khulnasoft-content"
+    onClick={[Function]}
+  >
+    <div
+      data-khulnasoft-component="page"
+      data-khulnasoft-content-id="id"
+    >
+      
+      <div
+        khulnasoft-type="blocks"
+        className="khulnasoft-blocks css-h47494"
+        onClick={[Function]}
+      >
+        <div
+          khulnasoft-id="khulnasoft-270035a08d734ae88ea177daff3595c0"
+          className="khulnasoft-block khulnasoft-270035a08d734ae88ea177daff3595c0 khulnasoft-has-component css-hgfgng"
+          style={Object {}}
+        >
+          <span
+            className="khulnasoft-text css-1qggkls"
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<p>some text...</p>",
+              }
+            }
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onInput={[Function]}
+            onKeyDown={[Function]}
+          />
+        </div>
+        <img
+          aria-hidden="true"
+          khulnasoft-id="khulnasoft-pixel-4fzzzxjylrx"
+          className="khulnasoft-block khulnasoft-pixel-4fzzzxjylrx css-1mvsfya"
+          role="presentation"
+          src="https://cdn.khulnasoft.com/api/v1/pixel?apiKey=null"
+          style={Object {}}
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
