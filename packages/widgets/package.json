@@ -1,13 +1,12 @@
 {
-  "name": "@khulnasoft.com/react",
-  "version": "0.1.118",
+  "name": "@khulnasoft.com/widgets",
+  "version": "0.0.32",
   "description": "",
   "keywords": [],
-  "main": "dist/khulnasoft-react.cjs.js",
-  "browser": "dist/khulnasoft-react.browser.js",
-  "unpkg": "dist/khulnasoft-react.unpkg.js",
-  "module": "dist/khulnasoft-react.es5.js",
-  "typings": "dist/types/khulnasoft-react.d.ts",
+  "main": "dist/khulnasoft-widgets.umd.js",
+  "module": "dist/khulnasoft-widgets.es5.js",
+  "unpkg": "dist/khulnasoft-widgets.browser.js",
+  "typings": "dist/types/khulnasoft-widgets.d.ts",
   "files": [
     "dist",
     "index.js"
@@ -15,7 +14,7 @@
   "author": "Md Sulaiman <dev.sulaiman@icloud.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/khulnasoft-lab/recli"
+    "url": "https://github.com/khulnasoft-lab/khulnasoft-widgets"
   },
   "license": "MIT",
   "engines": {
@@ -31,7 +30,7 @@
     "test:watch": "jest --watch",
     "test:prod": "npm run lint && npm run test -- --coverage --no-cache",
     "deploy-docs": "ts-node tools/gh-pages-publish",
-    "report-coverage": "cat ./coverage/lcov.info≈ | coveralls",
+    "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "commit": "git-cz",
     "release": "npm run build && npm publish",
     "release:patch": "npm run build && npm version patch && npm publish",
@@ -122,11 +121,13 @@
     "validate-commit-msg": "^2.12.2"
   },
   "dependencies": {
+    "@khulnasoft.com/react": "../react",
     "@khulnasoft.com/sdk": "../sdk",
     "core-js": "^2.5.7",
     "immer": "^1.7.2",
     "lodash-es": "^4.17.10",
     "node-fetch": "^2.3.0",
+    "nuka-carousel": "^4.4.7",
     "react": "^16.4.1",
     "react-dom": "^16.4.2",
     "vm2": "^3.6.4"

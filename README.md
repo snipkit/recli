@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Khulnasoft
+
+Drag and drop page building for any website. Use your React components, publish remotely
+
+[gif with hot reload]
+
+## What is it good for?
+
+- Landing pages
+- Documentation
+- Blogging
+- Marketing pages (homepage, etc)
+- Content pages (about, FAQ, etc)
+- Optimization (ab test pages)
+- Marketing teams that never stop asking for changes
+- Developers who are tired of pushing pixels
+
 
 ## Getting Started
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```sh
+npm install --save @khulnasoft.com/react
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Create a free account at [khulnasoft.com](https://khulnasoft.com) and grab your [API key](https://khulnasoft.com/account/organization)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```ts
+import { khulnasoft, KhulnasoftComponent } from '@khulnasoft.com/react'
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+khulnasoft.init(YOUR_KEY)
+```
 
-## Learn More
+Then in your router
+```tsx
+<Route path="/something" render={() => <KhulnasoftComponent model="page" />}>
+```
 
-To learn more about Next.js, take a look at the following resources:
+Create a new page and open your-dev-url:port/something and edit
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+[gif]
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Using your components
 
-## Deploy on Vercel
+Wrap a component
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```tsx
+import { KhulnasoftBlock } from '@khulnasoft.com/react'
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+@KhulnasoftBlock({
+  name: 'Simple Text',
+  inputs: [{ name: 'text', type: 'string' }]
+})
+export class SimpleText extends React.Component {
+  render() {
+    return <h1>{this.props.text}</h1>
+  }
+}
+```
+
+Then back at your page
+
+```tsx
+import './simple-page'
+
+// ...
+
+<Route path="/something" render={() => <KhulnasoftComponent model="page">}>
+```
+
+Open the dashboard and use it
+
+[gif]
+
+More docs on khulnasoft APIs and such at [khulnasoft.com/c/docs](https://khulnasoft.com/c/docs)
+
+For Khulnasoft decorator support you need to be using typescript or babel with legacy decorators.
+Alternatively you can use the alternative syntax:
+
+```tsx
+import { khulnasoftBlocks } from '@khulnasoft.com/react'
+
+class SimpleText extends React.Component {
+  render() {
+    return <h1>{this.props.text}</h1>
+  }
+}
+
+khulnasoftBlocks.add(SimpleText, {
+  name: 'Simple Text',
+  inputs: [{ name: 'text', type: 'string' }]
+})
+```
+
+
+
+## Troubleshooting and feedback
+
+Problems? Requests? Open an issue. Always want feedback, interesting new use cases, happy to help.

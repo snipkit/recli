@@ -1,67 +1,55 @@
-'use client';
-import React from 'react';
-import { withKhulnasoft } from '../functions/with-khulnasoft';
-import { Link } from '../components/Link';
+import React from 'react'
 
-export interface ButtonProps {
-  attributes?: any;
-  text?: string;
-  link?: string;
-  openLinkInNewTab?: boolean;
-}
+import { KhulnasoftBlock } from '../decorators/khulnasoft-block.decorator'
 
-class ButtonComponent extends React.Component<ButtonProps> {
+@KhulnasoftBlock({
+  name: 'Button',
+  inputs: [
+    { name: 'text', type: 'string', defaultValue: 'Click me' },
+    { name: 'link', type: 'url', required: true },
+    {
+      name: 'position',
+      type: 'string',
+      enum: ['left', 'center', 'right', 'stretch'],
+      defaultValue: 'center'
+    },
+    { name: 'color', type: 'color', defaultValue: '#000000' },
+    { name: 'textColor', type: 'color', defaultValue: '#ffffff' },
+    { name: 'size', type: 'number', defaultValue: 15 },
+    { name: 'corners', type: 'number', defaultValue: 4, hideFromUI: true }
+  ]
+})
+export class Button extends React.Component<any> {
+  private get positionToAlign() {
+    switch (this.props.position) {
+      case 'left':
+        return 'flex-start'
+      case 'right':
+        return 'flex-end'
+      default:
+        return this.props.position || 'center'
+    }
+  }
+
   render() {
-    const Tag = this.props.link ? Link : 'span';
     return (
-      <Tag
-        role="button"
+      <a
+        style={{
+          padding: `${this.props.size}px ${this.props.size * 1.5}px`,
+          fontSize: this.props.size,
+          color: this.props.textColor,
+          backgroundColor: this.props.color,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          alignSelf: this.positionToAlign,
+          borderRadius: this.props.corners,
+          textDecoration: 'none'
+        }}
         href={this.props.link}
-        target={this.props.openLinkInNewTab ? '_blank' : undefined}
-        {...this.props.attributes}
       >
         {this.props.text}
-      </Tag>
-    );
+      </a>
+    )
   }
 }
-
-export const Button = withKhulnasoft(ButtonComponent, {
-  name: 'Core:Button',
-  image:
-    'https://cdn.khulnasoft.com/api/v1/image/assets%2FIsxPKMo2gPRRKeakUztj1D6uqed2%2F81a15681c3e74df09677dfc57a615b13',
-  defaultStyles: {
-    // TODO: make min width more intuitive and set one
-    appearance: 'none',
-    paddingTop: '15px',
-    paddingBottom: '15px',
-    paddingLeft: '25px',
-    paddingRight: '25px',
-    backgroundColor: '#000000',
-    color: 'white',
-    borderRadius: '4px',
-    textAlign: 'center',
-    cursor: 'pointer',
-  },
-  inputs: [
-    {
-      name: 'text',
-      type: 'text',
-      defaultValue: 'Click me!',
-      bubble: true,
-    },
-    {
-      name: 'link',
-      type: 'url',
-      bubble: true,
-    },
-    {
-      name: 'openLinkInNewTab',
-      type: 'boolean',
-      defaultValue: false,
-      friendlyName: 'Open link in new tab',
-    },
-  ],
-  static: true,
-  noWrap: true,
-});

@@ -1,18 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-export const KhulnasoftStoreContext = React.createContext<KhulnasoftStore>({
+export const KhulnasoftStoreContext = React.createContext({
   state: {},
-  rootState: {},
-  content: {},
-  context: {},
-  update: (mutator: (state: any) => any) => null,
-});
-
-export interface KhulnasoftStore {
-  state: any;
-  rootState: any;
-  content: any;
-  context: any;
-  update: (mutator: (state: any) => any) => any;
-  renderLink?: (props: React.AnchorHTMLAttributes<any>) => React.ReactNode;
-}
+  update: (mutator: (state: any) => void) => {}
+})

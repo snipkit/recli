@@ -1,7 +1,7 @@
 import * as ts from 'typescript';
 import typescript from 'rollup-plugin-typescript2';
-import commonjs from '@rollup/plugin-commonjs';
-import resolve from '@rollup/plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
+import resolve from 'rollup-plugin-node-resolve';
 import uglify from 'rollup-plugin-uglify';
 import json from 'rollup-plugin-json';
 
@@ -19,7 +19,10 @@ const basicOptions = {
     }),
     json(),
     commonjs({
-      include: /node_modules/,
+      namedExports: {
+        'js-cookie': ['get', 'set'],
+        './node_modules/es6-promise/dist/es6-promise.j': ['polyfill'],
+      },
     }),
   ],
 };
@@ -29,7 +32,7 @@ const umdOptions = {
   output: [
     {
       format: 'umd',
-      name: 'KhulnasoftLab', // or another valid identifier, no dashes
+      name: 'Khulnasoft',
       file: 'dist/index.umd.js',
       sourcemap: true,
       amd: {
@@ -45,8 +48,8 @@ const umdMinOptions = {
   output: [
     {
       format: 'umd',
-      name: 'KhulnasoftLab', // or another valid identifier, no dashes
-      file: pkg.unpkg,
+      name: 'Khulnasoft',
+      file: pkg.browser,
       sourcemap: true,
       amd: {
         id: '@khulnasoft.com/sdk',
@@ -70,10 +73,7 @@ const externalModuleOptions = {
       sourcemap: true,
     },
   ],
-  // Only mark dependencies as external, except react and react-dom
-  external: Object.keys(pkg.dependencies || {}).filter(
-    dep => dep !== 'react' && dep !== 'react-dom'
-  ),
+  external: Object.keys(pkg.dependencies || {}),
   plugins: basicOptions.plugins.concat([
     resolve({
       only: [/^\.{0,2}\//],

@@ -1,9 +1,9 @@
-import { Khulnasoft, Component } from '@khulnasoft.com/sdk';
+import { Khulnasoft, Component } from '@khulnasoft.com/sdk'
 
 interface ReactComponent extends Component {}
 
 export function KhulnasoftBlock(options: ReactComponent) {
-  options.type = 'react';
+  options.type = 'react'
 
-  return Khulnasoft.Component(options);
+  return Khulnasoft.Component(options)
 }
