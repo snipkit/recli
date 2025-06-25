@@ -1,6 +1,6 @@
 {
   "name": "@khulnasoft.com/react",
-  "version": "0.1.118",
+  "version": "0.1.119",
   "description": "",
   "keywords": [],
   "main": "dist/khulnasoft-react.cjs.js",
@@ -88,6 +88,7 @@
     "@types/jest": "^22.0.0",
     "@types/lodash-es": "^4.17.1",
     "@types/node": "^10.0.3",
+    "@types/react": "^16.4.1",
     "@types/react-dom": "^16.0.7",
     "colors": "^1.1.2",
     "commitizen": "^2.9.6",
@@ -118,11 +119,10 @@
     "tslint-config-standard": "^7.0.0",
     "typedoc": "^0.11.0",
     "typescript": "^2.6.2",
-    "@types/react": "^16.4.1",
     "validate-commit-msg": "^2.12.2"
   },
   "dependencies": {
-    "@khulnasoft.com/sdk": "../sdk",
+    "@khulnasoft.com/sdk": "*",
     "core-js": "^2.5.7",
     "immer": "^1.7.2",
     "lodash-es": "^4.17.10",
